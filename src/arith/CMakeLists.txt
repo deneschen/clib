@@ -1,0 +1,1 @@
+add_lib(arith SHARED_LIB SRCS arith.c)

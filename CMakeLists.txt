@@ -9,6 +9,7 @@ if(CMAKE_BUILD_TYPE MATCHES "Release")
     add_link_options(-rdynamic)
 endif()
 
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_link_options($<$<CONFIG:RELEASE>:-s>)
 
 # Set the output path for executable binaries (e.g., your main program)
