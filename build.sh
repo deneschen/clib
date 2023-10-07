@@ -42,5 +42,16 @@ while true; do
   esac
 done
 
-cmake -B $out -S .
-cmake --build $out
+if [[ $cross = true ]]; then
+  export CC=aarch64-none-linux-gnu-gcc
+  export LD=aarch64-none-linux-gnu-gcc
+  export CXX=aarch64-none-linux-gnu-gcc
+fi
+
+if [[ $debug = true ]]; then
+  cmake -B $out -S . -DCMAKE_BUILD_TYPE=Debug
+else
+  cmake -B $out -S . -DCMAKE_BUILD_TYPE=Release
+fi
+
+cmake --build $out -- --no-print-directory

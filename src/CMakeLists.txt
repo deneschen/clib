@@ -1,1 +1,1 @@
-add_exec(double SRCS double.c)
+inc_subdir()

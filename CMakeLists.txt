@@ -3,6 +3,14 @@ project(clib)
 
 enable_language(C CXX)
 
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
+if(CMAKE_BUILD_TYPE MATCHES "Release")
+    add_link_options(-rdynamic)
+endif()
+
+add_link_options($<$<CONFIG:RELEASE>:-s>)
+
 # Set the output path for executable binaries (e.g., your main program)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 # Set the output path for shared and static libraries (optional)
